@@ -1,0 +1,73 @@
+.searchbar {
+    background-color:#27254C;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.searchbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchbar nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.searchbar nav ul li {
+    margin-right: 20px;
+}
+
+.searchbar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    
+}
+.searchbar nav ul li a:hover {
+    color: #45B0D2; /* Cambia el color al hacer hover */
+}
+
+/* Estilos del formulario de búsqueda */
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form button:hover {
+    background-color: #45B0D2;
+}
+
+.search-bar button {
+    margin-left: 5px;
+    font-size: 20px;
+    background-color: #564A94; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 25px; /* Relleno interno */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  .search-bar button:hover {
+    background-color: #45B0D2; /* Cambia el color de fondo al pasar el ratón */
+  }
+
+  .search-bar input[type="text"] {
+    width: 300px; /* Ancho de la barra de búsqueda */
+    padding: 10px; /* Relleno interno */
+    border: 2px solid #9B8AB4; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+  }
+  
+  /* Estilos cuando el usuario coloca el cursor sobre la barra de búsqueda */
+  .search-bar input[type="text"]:focus {
+    border-color: #45B0D2; /* Cambia el color del borde */
+    outline: none; /* Quita el contorno alrededor del elemento */
+  }

@@ -1,0 +1,19 @@
+<!-- search-bar.component.html -->
+
+<div class="searchbar">
+  <h2>Anime Tracker</h2>
+  <div class="search-bar">
+    <input type="text" placeholder="Buscar anime..." [(ngModel)]="searchTerm" (keyup.enter)="search()">
+    <button (click)="search()">Buscar</button>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Calendario</a></li>
+      <li><a href="#">Lista de Animes</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mostrar los resultados de la búsqueda aquí -->
+  
+</div>

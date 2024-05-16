@@ -1,0 +1,8 @@
+<div class="anime-list">
+    <div *ngFor="let anime of animes" class="anime-item">
+      <!-- Aquí muestra los detalles de cada anime -->
+      <h3>{{ anime.title }}</h3>
+      <img [src]="anime.image_url" alt="{{ anime.title }}">
+      <p>{{ anime.synopsis }}</p>
+    </div>
+  </div>
