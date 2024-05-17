@@ -1,0 +1,13 @@
+<div *ngIf="!isLoginSuccessful">
+<form (ngSubmit)="login()">
+    <div>
+      <label for="username">Nombre de usuario</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username">
+    </div>
+    <div>
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password">
+    </div>
+    <button type="submit">Iniciar sesión</button>
+  </form>
+  </div>

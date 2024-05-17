@@ -1,0 +1,15 @@
+<div class="create-form">
+    <h2>Crear Nuevo Registro</h2>
+    <form (submit)="createRecord()">
+      <div>
+        <label>Título:</label>
+        <input type="text" [(ngModel)]="title" name="title" required>
+      </div>
+      <div>
+        <label>Descripción:</label>
+        <textarea [(ngModel)]="description" name="description" required></textarea>
+      </div>
+      <button type="submit">Crear Registro</button>
+    </form>
+  </div>
+  

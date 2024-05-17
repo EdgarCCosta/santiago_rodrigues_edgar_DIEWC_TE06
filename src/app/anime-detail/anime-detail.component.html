@@ -1,0 +1,41 @@
+<div *ngIf="showAnimeDetail" class="anime-detail-container">
+    <!-- Detalle del anime -->
+    <div *ngIf="anime">
+      <h2 class="anime-title">{{ anime.title.romaji }}</h2>
+      <div class="anime-grid">
+        <img [src]="anime.coverImage.large" alt="{{ anime.title.romaji }}" class="anime-image" />
+        <div>
+          <div class="anime-description" [innerHTML]="anime.description"></div>
+          <div class="anime-characters" *ngIf="anime.characters.edges.length > 0">
+          </div>
+        </div>
+        <div class="anime-details">
+          <p *ngIf="anime.averageScore !== null" class="anime-score">User Rating: {{ anime.averageScore }}/100</p>
+          <p *ngIf="anime.averageScore === null" class="anime-score">User Rating: Not available</p>
+          <p class="anime-episodes">Episodes: {{ anime.episodes || 'Unknown' }}</p>
+          <p class="anime-genres">Genres: {{ anime.genres.join(', ') }}</p>
+          <p class="anime-studio">Studio: {{ getMainStudio(anime.studios.edges) }}</p>
+          <p class="anime-status">Status: {{ anime.status }}</p>
+          <div *ngIf="anime.trailer">
+            <h3>Trailer</h3>
+            <video width="320" height="240" controls>
+                <source [src]="anime.trailer.thumbnail" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+              </video>
+          </div>
+          <div class="anime-recommendations" *ngIf="anime.recommendations.edges.length > 0">
+            <h3>Recommendations</h3>
+            <ul>
+              <li *ngFor="let recommendation of anime.recommendations.edges" class="recommendation-item">
+                {{ recommendation.node.mediaRecommendation.title.romaji }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!anime" class="anime-not-found">
+      <p>Anime not found.</p>
+    </div>
+  </div>
+  

@@ -30,10 +30,10 @@
     
 }
 .searchbar nav ul li a:hover {
-    color: #45B0D2; /* Cambia el color al hacer hover */
+    color: #45B0D2;
 }
 
-/* Estilos del formulario de búsqueda */
+
 .search-form {
     display: flex;
     align-items: center;
@@ -46,28 +46,28 @@
 .search-bar button {
     margin-left: 5px;
     font-size: 20px;
-    background-color: #564A94; /* Color de fondo */
-    color: white; /* Color del texto */
-    padding: 10px 25px; /* Relleno interno */
-    border: none; /* Sin borde */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-    border-radius: 5px; /* Bordes redondeados */
+    background-color: #564A94;
+    color: white; 
+    padding: 10px 25px; 
+    border: none; 
+    cursor: pointer; 
+    border-radius: 5px; 
   }
   
   .search-bar button:hover {
-    background-color: #45B0D2; /* Cambia el color de fondo al pasar el ratón */
+    background-color: #45B0D2;
   }
 
   .search-bar input[type="text"] {
-    width: 300px; /* Ancho de la barra de búsqueda */
-    padding: 10px; /* Relleno interno */
-    border: 2px solid #9B8AB4; /* Borde */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño de la fuente */
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #9B8AB4;
+    border-radius: 5px;
+    font-size: 16px;
   }
   
-  /* Estilos cuando el usuario coloca el cursor sobre la barra de búsqueda */
+  
   .search-bar input[type="text"]:focus {
-    border-color: #45B0D2; /* Cambia el color del borde */
-    outline: none; /* Quita el contorno alrededor del elemento */
+    border-color: #45B0D2; 
+    outline: none; 
   }

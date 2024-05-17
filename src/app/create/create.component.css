@@ -1,0 +1,38 @@
+.anime-detail-container {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .anime-info {
+    flex: 1; /* Hace que esta columna ocupe el espacio restante */
+    margin-right: 20px; /* Espacio entre las columnas */
+  }
+  
+  .anime-image {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .anime-description {
+    margin-bottom: 10px;
+  }
+  
+  .anime-characters {
+    margin-bottom: 10px;
+  }
+  
+  .anime-score {
+    margin-bottom: 10px;
+  }
+  
+  .no-characters {
+    margin-bottom: 10px;
+  }
+  
+  .anime-not-found {
+    margin-bottom: 10px;
+  }
+  
