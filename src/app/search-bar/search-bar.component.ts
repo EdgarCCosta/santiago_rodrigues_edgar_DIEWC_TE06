@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ApiService } from '../Services/api.service';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,28 +9,24 @@ import { ApiService } from '../Services/api.service';
 })
 export class SearchBarComponent {
   searchTerm: string = '';
-  searchResults: any[] = []; // Asegúrate de que searchResults tenga el tipo adecuado para los animes
+  @Output() searchResultsChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
-  onInputChange(event: any) {
-    this.searchTerm = event.target.value;
-    this.search();
+  search(): void {
+    this.apiService.searchAnime(this.searchTerm).subscribe(
+      (response: any) => {
+        const results = response.data.Page.media;
+        this.searchResultsChanged.emit(results);
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        console.error('Error fetching search results:', error);
+      }
+    );
   }
-
-  search() {
-    if (this.searchTerm.trim() !== '') {
-      this.apiService.searchAnime(this.searchTerm).subscribe(
-        (results: any[]) => {
-          this.searchResults = results;
-        },
-        (error) => {
-          console.error('Error al buscar animes:', error);
-          // Manejar el error aquí
-        }
-      );
-    } else {
-      this.searchResults = [];
-    }
+  goHome(): void {
+    this.searchResultsChanged.emit([]);
+    this.router.navigate(['/']);
   }
 }

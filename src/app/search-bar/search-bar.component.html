@@ -1,5 +1,3 @@
-<!-- search-bar.component.html -->
-
 <div class="searchbar">
   <h2>Anime Tracker</h2>
   <div class="search-bar">
@@ -8,12 +6,9 @@
   </div>
   <nav>
     <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Calendario</a></li>
-      <li><a href="#">Lista de Animes</a></li>
+      <li><a (click)="goHome()">Inicio</a></li>
+      <li><a routerLink="/create">Anadir Anime</a></li>
     </ul>
   </nav>
-
-  <!-- Mostrar los resultados de la búsqueda aquí -->
-  
 </div>
+<router-outlet></router-outlet>

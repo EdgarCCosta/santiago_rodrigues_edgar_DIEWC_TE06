@@ -1,22 +1,125 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private clientId = '51278da22401faa2ceed489b55b6a2b3';
+  private baseUrl: string = 'https://graphql.anilist.co';
+
   constructor(private http: HttpClient) {}
 
-  searchAnime(term: string): Observable<any[]> {
-    // Define los encabezados con el cliente ID
-    const headers = new HttpHeaders({
+  // Método existente para buscar anime
+  searchAnime(query: string): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = {
+      query: `
+        query ($search: String) {
+          Page {
+            media(search: $search, type: ANIME) {
+              id
+              title {
+                romaji
+                english
+              }
+              description
+              coverImage {
+                large
+              }
+              averageScore
+            }
+          }
+        }
+      `,
+      variables: {
+        search: query
+      }
+    };
 
-      'X-MAL-CLIENT-ID': this.clientId
-    });
+    return this.http.post<any>(this.baseUrl, body, { headers });
+  }
 
-    // Realiza la solicitud GET para buscar animes en función del término de búsqueda
-    return this.http.get<any[]>(`https://api.myanimelist.net/v2/anime?q=${term}`, { headers });
+  // Método existente para obtener anime por ID
+  getAnimeById(id: number): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = {
+      query: `
+      query ($id: Int) {
+        Media (id: $id, type: ANIME) {
+          id
+          title {
+            romaji
+            english
+          }
+          description
+          startDate {
+            year
+            month
+            day
+          }
+          endDate {
+            year
+            month
+            day
+          }
+          season
+          status
+          episodes
+          isLicensed
+          source
+          hashtag
+          trailer {
+            id
+            site
+            thumbnail
+          }
+          updatedAt
+          coverImage {
+            large
+            extraLarge
+          }
+          bannerImage
+          averageScore
+          genres
+          characters (role: MAIN){
+            edges {
+              node {
+                name {
+                  full
+                }
+              }
+            }
+          }
+          studios {
+            edges {
+              isMain
+              node {
+                name
+              }
+            }
+          }
+          recommendations(perPage: 5, sort: RATING_DESC) {
+            edges {
+              node {
+                mediaRecommendation {
+                  title {
+                    romaji
+                    english
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      `,
+      variables: {
+        id: id
+      }
+    };
+
+    return this.http.post<any>(this.baseUrl, body, { headers: headers });
   }
 }

@@ -1,34 +1,28 @@
 
-
-<main class="main">
- 
-  <app-search-bar></app-search-bar>
   
-
-<!-- Sección de bienvenida -->
-<section class="hero">
-    <div class="container">
+  <main class="main">
+    <app-login-form></app-login-form>
+<div *ngIf="authService.loggedIn">
+    <app-search-bar (searchResultsChanged)="onSearchResultsChanged($event)"></app-search-bar>
+    
+    <!-- Sección de bienvenida -->
+    <section class="hero" *ngIf="searchResults.length === 0">
+      <div class="container">
         <h2>Bienvenido a Anime Tracker</h2>
         <p>¡Haz un seguimiento de los animes que estás viendo y descubre nuevos!</p>
-        <a href="#" class="btn">Empezar</a>
-    </div>
-</section>
-
-<!-- Pie de página -->
-<footer class="footer">
-    <div class="container">
+      </div>
+    </section>
+  
+    <!-- Mostrar la lista de animes cuando hay resultados -->
+    <app-anime-list *ngIf="searchResults.length > 0" [animes]="searchResults"></app-anime-list>
+    
+    <router-outlet></router-outlet>
+  
+    <!-- Pie de página -->
+    <footer class="footer">
+      <div class="container">
         <p>© 2024 Anime Tracker. Todos los derechos reservados.</p>
-    </div>
-</footer>
-</main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet />
+      </div>
+    </footer>
+  </div>
+  </main>
